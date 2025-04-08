@@ -80,32 +80,8 @@ uv sync # Install all project dependencies
             <td>✅</td>
         </tr>
         <tr>
-            <td>DB_USER</td>
-            <td>PostgreSQL database username</td>
-            <td></td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td>DB_PASSWORD</td>
-            <td>PostgreSQL database password</td>
-            <td></td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td>DB_HOST</td>
-            <td>PostgreSQL server hostname</td>
-            <td></td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td>DB_PORT</td>
-            <td>PostgreSQL server port</td>
-            <td></td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td>DB_NAME</td>
-            <td>PostgreSQL database name</td>
+            <td>DB_URI</td>
+            <td>PostgreSQL database connection URI</td>
             <td></td>
             <td>✅</td>
         </tr>
