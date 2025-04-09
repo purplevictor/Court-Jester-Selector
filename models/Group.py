@@ -9,6 +9,3 @@ class Group(SQLModel, table=True):
 
     players: List["Player"] = Relationship(back_populates="group")
     draws: List["Draw"] = Relationship(back_populates="group")
-
-    class Config:
-        arbitrary_types_allowed = True
