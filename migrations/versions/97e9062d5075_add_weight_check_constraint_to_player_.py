@@ -11,7 +11,7 @@ from alembic import op
 import sqlalchemy as sa
 import sqlmodel
 
-from config import MAX_WEIGHT
+from config import MAX_WEIGHT, MIN_WEIGHT
 
 # revision identifiers, used by Alembic.
 revision: str = '97e9062d5075'
@@ -26,7 +26,7 @@ def upgrade() -> None:
     op.create_check_constraint(
         constraint_name="ck_weight_bounds",
         table_name="player",
-        condition=f"weight >= 1 AND weight <= {MAX_WEIGHT}"
+        condition=f"weight >= {MIN_WEIGHT} AND weight <= {MAX_WEIGHT}"
     )
     # ### end Alembic commands ###
 

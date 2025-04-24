@@ -15,3 +15,7 @@ class Draw(SQLModel, table=True):
     __table_args__ = (
         UniqueConstraint('group_id', 'draw_date', name='uix_group_date'),
     )
+
+    @property
+    def added(self) -> str:
+        return f"Draw {self.id} (group_id: {self.group.id}, player_id: {self.player.id}) added with date {self.draw_date}."
