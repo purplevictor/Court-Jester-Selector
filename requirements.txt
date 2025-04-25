@@ -1,0 +1,4 @@
+asyncpg==0.30
+python-telegram-bot[all]==22.0
+sqlmodel==0.0.24
+alembic==1.15.2
