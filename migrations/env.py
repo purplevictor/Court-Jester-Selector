@@ -13,7 +13,11 @@ from sqlmodel import SQLModel
 
 from config import DB_URI
 
-from models import *
+from models import (
+    Draw,
+    Group,
+    Player,
+)
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

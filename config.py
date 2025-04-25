@@ -43,7 +43,7 @@ TG_BOT_ADMIN_RIGHTS_CHAT_MEMBER_USER_IDS = tuple(
 if not TG_BOT_ADMIN_RIGHTS_CHAT_MEMBER_STATUS and not TG_BOT_ADMIN_RIGHTS_CHAT_MEMBER_USER_IDS:
     raise ValueError("TG_BOT_ADMIN_RIGHTS_CHAT_MEMBER_STATUS and/or TG_BOT_ADMIN_RIGHTS_CHAT_MEMBER_USER_IDS must be defined.")
 
-DB_URI = f"postgresql+asyncpg://{os.environ["DB_URI"]}"
+DB_URI = f"postgresql+asyncpg://{os.environ['DB_URI']}"
 
 MIN_WEIGHT = int(os.environ.get("MIN_WEIGHT", 1))
 

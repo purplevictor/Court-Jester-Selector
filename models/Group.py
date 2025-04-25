@@ -1,6 +1,18 @@
-from typing import Optional, Dict, List, Any
+from typing import (
+    Any,
+    Dict,
+    List,
+    Optional,
+)
 
-from sqlmodel import SQLModel, BigInteger, Column, JSON, Field, Relationship
+from sqlmodel import (
+    BigInteger,
+    Column,
+    Field,
+    JSON,
+    Relationship,
+    SQLModel,
+)
 
 class Group(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)

@@ -1,7 +1,12 @@
-from typing import Optional
 from datetime import date
+from typing import Optional
 
-from sqlmodel import SQLModel, UniqueConstraint, Field, Relationship
+from sqlmodel import (
+    Field,
+    Relationship,
+    SQLModel,
+    UniqueConstraint,
+)
 
 class Draw(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -13,7 +18,7 @@ class Draw(SQLModel, table=True):
     player: "Player" = Relationship(back_populates="draws")
     
     __table_args__ = (
-        UniqueConstraint('group_id', 'draw_date', name='uix_group_date'),
+        UniqueConstraint("group_id", "draw_date", name="uix_group_date"),
     )
 
     @property

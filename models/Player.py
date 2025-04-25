@@ -1,8 +1,23 @@
-from typing import Optional, List
+from typing import (
+    List,
+    Optional,
+)
 
-from sqlmodel import SQLModel, BigInteger, CheckConstraint, Column, UniqueConstraint, Field, Relationship
+from sqlmodel import (
+    BigInteger,
+    CheckConstraint,
+    Column,
+    Field,
+    Relationship,
+    SQLModel,
+    UniqueConstraint,
+)
 
-from config import MIN_WEIGHT, MAX_WEIGHT, DEFAULT_WEIGHT
+from config import (
+    DEFAULT_WEIGHT,
+    MAX_WEIGHT,
+    MIN_WEIGHT,
+)
 
 class Player(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)

@@ -116,9 +116,7 @@ async def set_admin_commands(bot: Bot, chat_members: Sequence[Union[ChatMemberOw
     return
 
 
-async def bot_chat_member_status_handler(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-) -> None:
+async def bot_chat_member_status_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_member = update.my_chat_member
     status = chat_member.new_chat_member.status
     chat = chat_member.chat
@@ -305,8 +303,8 @@ def protect(func_):
             result = await session.exec(
                 select(
                     Group,
-                    func.count(distinct(Player.id)).label('players_count'),
-                    func.count(distinct(Draw.id)).label('draws_count')
+                    func.count(distinct(Player.id)).label("players_count"),
+                    func.count(distinct(Draw.id)).label("draws_count")
                 )
                 .join(Player, Group.id == Player.group_id, isouter=True)
                 .join(Draw, Group.id == Draw.group_id, isouter=True)
@@ -533,7 +531,7 @@ async def show_players_in_group(update: Update, context: ContextTypes.DEFAULT_TY
             .options(selectinload(Group.players))
         )
         group = result.one()
-        context.user_data['group'] = group
+        context.user_data["group"] = group
 
         if not group.players:
             await query.edit_message_text("❌ No chat member is a player.")
@@ -571,7 +569,7 @@ async def ask_player_weight(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
     player_id = int(query.data.split(":")[1])
 
-    group = context.user_data['group']
+    group = context.user_data["group"]
 
     async with AsyncSession(engine) as session:
         result = await session.exec(
@@ -584,7 +582,7 @@ async def ask_player_weight(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         )
         player = result.one()
 
-        context.user_data['player'] = player
+        context.user_data["player"] = player
 
     inline_keyboard_buttons = [
         InlineKeyboardButton(text=str(weight), callback_data=f"weight:{weight}")
@@ -607,8 +605,8 @@ async def update_player_weight(update: Update, context: ContextTypes.DEFAULT_TYP
 
     weight = int(query.data.split(":")[1])
 
-    group = context.user_data['group']
-    player = context.user_data['player']
+    group = context.user_data["group"]
+    player = context.user_data["player"]
 
     async with AsyncSession(engine) as session:
         result = await session.exec(
@@ -694,7 +692,10 @@ async def pick_player(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
                 players = [player for player in players if player.id != picked_player.id]
 
-            draw = Draw(group_id=group.id, player_id=picked_player.id)
+            draw = Draw(
+                group_id=group.id,
+                player_id=picked_player.id
+            )
             session.add(draw)
             await session.commit()
             await session.refresh(draw, attribute_names=["group", "player"])
