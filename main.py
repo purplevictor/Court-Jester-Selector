@@ -856,10 +856,15 @@ async def post_init(application: Application) -> None:
     return
  
 def main() -> None:
+    asyncio.set_event_loop(asyncio.new_event_loop())
     application = Application.builder().token(TG_BOT_TOKEN).post_init(post_init).build()
     application.run_polling(allowed_updates=ALLOWED_UPDATES)
  
 app = Flask(__name__)
+ 
+@app.route('/')
+def index():
+    return 'Bot is running!'
  
 if __name__ == "__main__":
     threading.Thread(target=main).start()
